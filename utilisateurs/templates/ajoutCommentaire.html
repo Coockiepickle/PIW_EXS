@@ -11,7 +11,8 @@
         {{ form.as_table }}
         </table>
         <br>
-        <input class="btn btn-primary" type="submit" value="Ajouter le commentaire">
+        <input class="btn btn-success" type="submit" value="Ajouter le commentaire">
+        <a class="btn btn-primary" href="{% url 'restaurants' %}">Retourner à la liste des restaurants</a>
     </form>
 {% endblock %}
 

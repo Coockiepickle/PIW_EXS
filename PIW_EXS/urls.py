@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from PIW_EXS.views import accueilView, aproposView, restaurantsView, connexion, commentaires, enregistrement, detailRestaurant, ajoutRestaurant, SelectmodifierRestaurant, supprimerRestaurant, gestion, modifierRestaurant, ajoutCommentaire
+from PIW_EXS.views import accueilView, aproposView, restaurantsView, connexion, commentaires, enregistrement, detailRestaurant, ajoutRestaurant, SelectmodifierRestaurant, supprimerRestaurant, gestion, modifierRestaurant, ajoutCommentaire, supprimerCommentaire, modifierCommentaire
 from django.contrib.auth import views as authentication_views
 
 
@@ -36,4 +36,6 @@ urlpatterns = [
     path('utilisateurs/connexion/', authentication_views.LoginView.as_view(template_name='connexion.html'), name='connexion'),
     path('utilisateurs/enregistrement/', enregistrement, name='enregistrement'),
     path('deconnexion/',authentication_views.LogoutView.as_view(template_name='deconnexion.html'), name='deconnexion'),
+    path('commentaires/modif/<int:pk>/', modifierCommentaire, name='modifierCommentaire'),
+    path('commentaires/suppr/<int:pk>/', supprimerCommentaire, name='supprimerCommentaire'),
 ]

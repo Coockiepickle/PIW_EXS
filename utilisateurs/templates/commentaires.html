@@ -15,6 +15,7 @@
                 <th>Commentaire</th>
                 <th>Note</th>
                 <th>Date</th>
+                <th colspan="2">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +25,8 @@
                 <td>{{ Commentaire.commentaire }}</td>
                 <td>{{ Commentaire.note }} / 5</td>
                 <td>{{ Commentaire.dateCommentaire }}</td>
+                <td><a class="btn btn-warning" href="{% url 'modifierCommentaire' Commentaire.noCommentaire %}">Modifier</a></td>
+                <td><a class="btn btn-danger" href="{% url 'supprimerCommentaire' Commentaire.noCommentaire %}">Supprimer</a></td>
             </tr>
             {% endfor %}
         </tbody>

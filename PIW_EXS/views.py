@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from gestion.forms import EnregistrementForm, ajoutRestaurantForm, modifierRestaurantForm, ajoutCommentaireForm, RechercheForm
+from gestion.forms import EnregistrementForm, ajoutRestaurantForm, modifierRestaurantForm, ajoutCommentaireForm, RechercheForm, modifierCommentaireForm
 from gestion.models import Restaurants, Commentaires
 from django.db.models import Q
 
@@ -94,3 +94,21 @@ def commentaires(request, pk):
 def gestion(request):
     commentaires = Commentaires.objects.filter(userName=request.user)
     return render(request, 'gestion.html', {'Commentaires': commentaires})
+
+def modifierCommentaire(request, pk):
+    commentaire = Commentaires.objects.get(noCommentaire=pk)
+    if request.method=="POST":
+        form = modifierCommentaireForm(request.POST, instance=commentaire)
+        if form.is_valid():
+            form.save()
+            return redirect('detailRestaurant', commentaire.noRestaurant_id)
+    else:
+        form = modifierCommentaireForm(instance=commentaire)
+    return render(request,'modifierCommentaire.html', {'form':form, 'Commentaires':commentaires})    
+
+def supprimerCommentaire(request,pk):
+    commentaire = Commentaires.objects.get(noCommentaire=pk)
+    if request.method == 'POST':
+        commentaire.delete()        
+        return redirect('detailRestaurant', commentaire.noRestaurant_id) 
+    return render(request,'supprimerCommentaire.html',{'Commentaires':commentaires}) 

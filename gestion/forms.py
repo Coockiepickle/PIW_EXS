@@ -28,3 +28,8 @@ class RechercheForm(forms.Form):
     nom = forms.CharField(max_length=30, required=False)
     ville = forms.CharField(max_length=30, required=False)
     type = forms.CharField(max_length=20, required=False)
+
+class modifierCommentaireForm(forms.ModelForm):
+    class Meta:
+        model = Commentaires
+        fields = '__all__'

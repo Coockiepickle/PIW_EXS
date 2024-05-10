@@ -17,15 +17,11 @@
                     <td>{{ Restaurant.typeRestaurant }}</td>
                 </tr>
                 <tr>
-                    <th>Note</th>
-                    <td>{{ Restaurant.note }} / 5</td>
-                </tr>
-                <tr>
                     <td colspan="2">
                         {% if user.is_authenticated %}
-                        <a class="btn btn-primary" href="{% url 'ajoutCommentaire' Restaurant.noRestaurant %}">Ajouter un commentaire</a>
+                        <a class="btn btn-success" href="{% url 'ajoutCommentaire' Restaurant.noRestaurant %}">Ajouter un commentaire</a>
                         {% endif %}
-                        <a class="btn btn-primary" href="{% url 'commentaires' Restaurant.noRestaurant %}">Voir les commentaires</a>
+                        <a class="btn btn-secondary" href="{% url 'commentaires' Restaurant.noRestaurant %}">Voir les commentaires</a>
                         <a class="btn btn-primary" href="{% url 'restaurants' %}">Retourner à la liste des restaurants</a>
                     </td>
                 </tr>
