@@ -1,0 +1,31 @@
+{% extends "master.html" %}
+
+{% block titre %}Commentaires{% endblock %}
+
+{% block titrePage %}Liste des commentaires pour {{ Restaurant.nomRestaurant }}{% endblock %}
+
+{% block contenu %}
+    <a class="btn btn-primary" href="{% url 'restaurants' %}">Retourner à la liste des restaurants</a>
+    <br>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Utilisateur</th>
+                <th>Commentaire</th>
+                <th>Note</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for Commentaire in Commentaires %}
+            <tr>
+                <td>{{ Commentaire.userName.username }}</td>
+                <td>{{ Commentaire.commentaire }}</td>
+                <td>{{ Commentaire.note }} / 5</td>
+                <td>{{ Commentaire.dateCommentaire }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

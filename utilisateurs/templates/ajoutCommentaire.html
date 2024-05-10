@@ -1,0 +1,18 @@
+{% extends "master.html" %}
+
+{% block titre %}Ajout de commentaire{% endblock %}
+
+{% block titrePage %}Ajouter un commentaire pour {{ Restaurant.nomRestaurant }}{% endblock %}
+
+{% block contenu %}
+    <form method="post">
+        <table>
+        {% csrf_token %}
+        {{ form.as_table }}
+        </table>
+        <br>
+        <input class="btn btn-primary" type="submit" value="Ajouter le commentaire">
+    </form>
+{% endblock %}
+
+

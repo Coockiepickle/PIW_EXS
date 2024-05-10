@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <ul class="nav justify-content-center">
+            <li><a href="{% url 'accueil' %}" class="nav-link px-2 text-white">Accueil</a></li>
+            <li><a href="{% url 'restaurants' %}" class="nav-link px-2 text-white">Restaurants</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'gestion' %}" class="nav-link px-2 text-white">Mon compte</a></li>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <form action="{% url 'deconnexion' %}" method="post">
+                {% csrf_token %}
+                <li class="nav-item"><button class="btn btn-link nav-link px-2 text-white" type="submit">Déconnexion
+                </button></li>
+                </form>
+            {% else %}
+            <li><a href="{% url 'connexion' %}" class="nav-link px-2 text-white">Connexion</a></li>
+            {% endif %}
+            <li><a href="{% url 'apropos' %}" class="nav-link px-2 text-white">A propos</a></li>
+        </ul>
+    </div>
+</div>

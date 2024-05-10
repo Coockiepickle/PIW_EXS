@@ -1,0 +1,21 @@
+{% extends "master.html" %}
+
+{% block titre %}Suppression{% endblock %}
+
+{% block titrePage %}Supprimer un restaurant{% endblock %}
+
+{% block contenu %}
+    <form method="post">
+        <h4>Choisissez le restaurant que vous souhaitez supprimer</h4>
+        <br>
+        {% csrf_token %}
+        <select name="nomRestaurant">
+            {% for Restaurant in Restaurants %}
+            <option value="{{ Restaurant.noRestaurant }}">{{ Restaurant.nomRestaurant }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <input class="btn btn-danger" type="submit" value="Supprimer le restaurant">
+    </form>
+{% endblock %}

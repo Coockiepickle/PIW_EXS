@@ -1,0 +1,13 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block titre %}Accueil{% endblock %}
+
+{% block titrePage %}Accueil{% endblock %}
+
+{% block contenu %}
+    <h4>Bienvenue sur Palais Critiques</h4>
+    <br>
+    <p class="lead">Sur notre site, vous trouverez des notes et des commenataires sur des restaurants.</p>
+    <p class="lead">Commencez dès maintenant à noter les restaurants près de chez vous en vous <a href="{% url 'connexion' %}">connectant</a> ou en vous <a href="{% url 'enregistrement' %}">inscrivant</a>.</p>
+{% endblock %}

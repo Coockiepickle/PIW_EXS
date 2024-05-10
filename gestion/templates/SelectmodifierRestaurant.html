@@ -1,0 +1,22 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block titre %}Modifier restaurant{% endblock %}
+
+{% block titrePage %}Modifier un restaurant{% endblock %}
+
+{% block contenu %}
+<form method="post">
+    <h4>Choisissez le restaurant que vous souhaitez modifier</h4>
+    <br>
+    {% csrf_token %}
+    <select name="nomRestaurant">
+        {% for Restaurant in Restaurants %}
+        <option value="{{ Restaurant.noRestaurant }}">{{ Restaurant.nomRestaurant }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <br>
+    <input class="btn btn-success" type="submit" value="Modififer le restaurant">
+</form>
+{% endblock %}

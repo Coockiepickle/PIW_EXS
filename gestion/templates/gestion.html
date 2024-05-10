@@ -1,0 +1,42 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block titre %}Mon compte{% endblock %}
+
+{% block titrePage %}Gestion des restaurants{% endblock %}
+
+{% block contenu %}
+    {% if user.is_superuser %}
+    <p>Bonjour {{ user.username }}, bienvenue dans votre espace de gestion des restaurants, ici vous pouvez ajouter, modifier ou supprimer des restaurants.</p>
+    {% else %}
+    <p>Bonjour {{ user.username }}, bienvenue dans votre espace de gestion des restaurants, ici vous pouvez ajouter ou modifier des restaurants.</p>
+    {% endif %}
+    <a class="btn btn-primary" href="{% url 'ajoutRestaurant' %}">Ajouter un restaurant</a>
+    <a class="btn btn-success" href="{% url 'SelectmodifierRestaurant' %}">Modifier un restaurant</a>
+    {% if user.is_superuser %}
+        <a class="btn btn-danger" href="{% url 'supprimerRestaurant' %}">Supprimer un restaurant</a>
+    {% endif %}
+    <br>
+    <br>
+    <h4>Historique des commentaires</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Restaurant</th>
+                <th>Commentaire</th>
+                <th>Note</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for Commentaire in Commentaires %}
+            <tr>
+                <td>{{ Commentaire.noRestaurant.nomRestaurant }}</td>
+                <td>{{ Commentaire.commentaire }}</td>
+                <td>{{ Commentaire.note }} / 5</td>
+                <td>{{ Commentaire.dateCommentaire }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

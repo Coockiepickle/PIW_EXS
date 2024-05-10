@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<title>Palais Critiques - {% block titre %}{% endblock %}</title>
+<header class="bg-primary text-white py-3">
+    <nav class="container d-flex justify-content-center">
+        <h1 class="m-0">Palais Critiques</h1>
+        {% include 'menu.html' %}
+    </nav>
+</header>
+<br>
+<h1>{% block titrePage %}{% endblock %}</h1>
+</head>
+<hr>
+<body>
+<br>
+
+{% block recherche %}{% endblock %}
+<br>
+{% block contenu %}{% endblock %}
+
+<footer class="bg-primary text-white py-3 fixed-bottom">
+    <div class="container d-flex justify-content-center">
+        <p class="m-0">  &copy; Damien Reynaud - Palais Critiques - 2024</p>
+    </div>
+</footer>
+
+</body>
+</html>

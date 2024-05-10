@@ -1,0 +1,14 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block titre %}Ajout restaurant{% endblock %}
+
+{% block titrePage %}Ajouter un restaurant{% endblock %}
+
+{% block contenu %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-primary" type="submit" value="Ajouter le restaurant">
+    </form>
+{% endblock %}
